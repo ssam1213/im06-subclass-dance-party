@@ -1,70 +1,59 @@
 $(document).ready(function() {
   window.dancers = [];
+  var windowWidth = $( window ).width();
+  var windowHeight = $( window ).height();
+  console.log('windowWidth', windowWidth);
+  console.log('windowHeight', windowHeight);
+  var topbarHeight = $('.topbar').height();
+
+  console.log('topbar', topbarHeight);
+
 
   $('.addDancerButton').on('click', function(event) {
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on dancefloor.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
 
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
     console.log(this);
-    // get the maker function for the kind of dancer we're supposed to make
+
 
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
-    // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
-      ($("body").height() * Math.random())/1.02,
-      ($("body").width() * Math.random())/1.02,
-      Math.random() * 900
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
 
     );
     console.log('dancer', dancer);
     $('body').append(dancer.$node);
 
-    // var blue = new dancerMakerFunction(
-    //   $("blue").css('border', function(){
-    //     return Math.ceil((cssRandom * 3) + 1);
-    //   })
-    //
-    // );
-    //
-    // $('body').append(blue.$node);
-
     window.dancers.push(dancer);
     console.log('window', window.dancers);
 
+    var position = dancer.$node.position();
+    console.log('position', position);
+    for(var i = 0; i < dancers.length - 1; i++){
+      // console.log('position.left', position.left );// ok
+      console.log('i', dancers[i].$node.position());
+    var y = Math.pow(Math.abs(position.left - dancers[i].$node.position().left), 2);
+    var x = Math.pow(Math.abs(position.top - dancers[i].$node.position().top), 2);
+    if(Math.sqrt(x+y) < 100) {
+      // $("#redDot").css({'width': '100px'});
+      alert("Too Close!!");
+    }
+    }
 
-    // var dancer2 = new dancerMakerFunction(
-    //   $("blue").css('border') * Math.random(),
-    //   $("blue").css('border') * Math.random(),
-    //   Math.random() * 1000
-    // );
-    //
-    // $('blue').append(dancer2.$node);
     $(".dancer").mouseover(function(){
-      console.log('this', this);
+    console.log('this', this);
       $(this).css({'width': '100px'});
     });
-    $(".dancer").mouseleave(function(){
-      console.log('this', this);
-      $(this).css({'width': '2px'});
-    });
+    // $(".dancer").mouseleave(function(){
+    //
+    //   $(this).css({'width': '1.15px'});
+    // });
 
   });
   $('.lineupButton').on('click', function(event) {
 
-    // var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
     console.log(this);
     console.log('da', window.dancers);
     for(var i=0; i<window.dancers.length; i++){

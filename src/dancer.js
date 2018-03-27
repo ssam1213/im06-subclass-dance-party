@@ -64,7 +64,7 @@ var MakeDancer = function(top, left, timeBetweenSteps) {
   };
   MakeDancer.prototype.lineUp = function(top, left){
     var lineUpSettings = {
-      top: 300,
+      top: 730,
       left: left
     };
     this.$node.css(lineUpSettings);
