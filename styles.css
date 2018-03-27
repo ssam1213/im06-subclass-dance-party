@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  /* background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/6GfbFRI/disco-stage-dance-floor-colorful-vivid-lights-flashing-8_n1cyyunwg__F0000.png") */
+  /* background-color:#444; */
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -25,3 +26,38 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.blue{
+  border:10px solid blue;
+  height: auto;
+  border-radius:10px;
+  position:absolute;
+}
+
+.image{
+  width: 60px;
+  height: 40px;
+  /* background-image: url(fxlogo.png);
+  border: solid 2px;
+  text-shadow: white 0px 0px 2px;
+  font-size: 16px;
+  background-size: 150px; */
+  position:absolute;
+
+}
+.lineupButton{
+  padding:5px 12px;
+  float:right;
+}
+/* #redDot:hover{
+
+} */
+/* .dancer2{
+  border:10px solid blue;
+  border-radius:10px;
+  position:absolute;
+}
+.dancer2{
+  border:10px solid white;
+  border-radius:10px;
+  position:absolute;
+} */
